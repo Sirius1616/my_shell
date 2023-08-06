@@ -119,10 +119,10 @@ char *find_path(info_t *, char *, char *);
 int loophsh(char **);
 
 /* toem_errors.c */
-void _eputs(char *);
-int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
+void puts_err(char *);
+int putchar_err(char);
+int filedes_put(char c, int fd);
+int filedes_puts(char *str, int fd);
 
 /* toem_string.c */
 int _strlen(char *);
@@ -160,11 +160,11 @@ int _isalpha(int);
 int _atoi(char *);
 
 /* toem_errors1.c */
-int _erratoi(char *);
-void print_error(info_t *, char *);
-int print_d(int, int);
-char *convert_number(long int, int, int);
-void remove_comments(char *);
+int atoi_error(char *)
+void err_print(t_info *, char *)
+int print_dec(int, int);
+char *num_conv(long int, int, int);
+void comment_rem(char *);
 
 /* toem_builtin.c */
 int _myexit(info_t *);

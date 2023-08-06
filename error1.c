@@ -105,7 +105,7 @@ int print_dec(int in, int fd)
  * Return: string
  */
 
-char num_conv(long int num, int _base, int _flag)
+char *num_conv(long int num, int _base, int _flag)
 {
 	static char *arr;
 	static char buff[50];
