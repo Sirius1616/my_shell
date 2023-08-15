@@ -7,28 +7,28 @@
  */
 
 
-int my_exit(info_t *info)
+int my_exit(t_info *details)
 {
-	int exit_code;
+	int e_code;
 
-	if (info->argv[1])
+	if (details->av[1])
 	{
-		exit_code = atoi(info->argv[1]);
+		e_code = atoi(details->av[1]);
 
-		if (exit_code == 0 && info->argv[1][0] != '0')
+		if (e_code == 0 && details->av[1][0] != '0')
 		{
-			info->status = 2;
-			print_error(info, "Illegal number: ");
-			_eputs(info->argv[1]);
-			_eputchar('\n');
+			details->stat = 2;
+			err_print(details, "Illegal number: ");
+			puts_err(details->av[1]);
+			putchar_err('\n');
 			return (1);
 		}
 
-	info->err_num = exit_code;
+	details->error_code = e_code;
 	return (-2);
 	}
 
-	info->err_num = -1;
+	details->error_code = -1;
 	return (-2)
 }
 
@@ -40,7 +40,7 @@ int my_exit(info_t *info)
  *  Return: Always 0
  */
 
-int change_cd(info_t *info)
+int change_cd(t_info *details)
 {
 	char buff[1024], *dir, *current_dir;
 	char *old_pwd, *new_pwd;
@@ -53,18 +53,18 @@ int change_cd(info_t *info)
 	{
 		_puts("TODO: >>getcwd failure emsg here<<\n");
 	}
-	else if (!info->argv[1])
+	else if (!details->av[1])
 	{
-		dir = get_env(info, "HOME=");
+		dir = get_env(details, "HOME=");
 		if (!dir)
-	{
-		dir = get_env(info, "PWD=");
+		{
+			dir = get_env(details, "PWD=");
+		}
+		c_dir_ret = chdir(dir ? dir : "/");
 	}
-	c_dir_ret = chdir(dir ? dir : "/");
-	}
-	else if (_strcmp(info->argv[1], "-") == 0)
+	else if (_strcmp(details->av[1], "-") == 0)
 	{
-		old_pwd = get_env(info, "OLDPWD=");
+		old_pwd = get_env(details, "OLDPWD=");
 		if (!old_pwd)
 	{
 		_puts(current_dir);
@@ -77,20 +77,20 @@ int change_cd(info_t *info)
 	}
 	else
 	{
-		c_dir_ret = chdir(info->argv[1]);
+		c_dir_ret = chdir(details->av[1]);
 	}
 
 	if (c_dir_ret == -1)
 	{
-		print_error(info, "can't cd into ");
-		_eputs(info->argv[1]);
-		_eputchar('\n');
+		err_print(details, "can't cd into ");
+		puts_err(details->av[1]);
+		putchar_err('\n');
 	}
 	else
 	{
-		_setenv(info, "OLDPWD", current_dir);
+		set_env(details, "OLDPWD", current_dir);
 		new_pwd = getcwd(buff, 1024);
-		_setenv(info, "PWD", new_pwd);
+		set_env(info, "PWD", new_pwd);
 	}
 
 	return (0);
@@ -104,21 +104,21 @@ int change_cd(info_t *info)
  *  Return: Always 0
  */
 
-int help_cd(info_t *info)
+int help_cd(t_info *details)
 {
-	char **arg_arr;
+	char **arr_arg;
 
-	arg_arr = info->argv;
+	arr_arg = details->av;
 	_puts("Usage: cd [directory]\n");
 	_puts("Change the current working directory.\n\n");
 	_puts("Options:\n");
 	_puts("  directory     The directory to change to.\n");
 
 
-	if (*arg_arr)
+	if (*arr_arg)
 	{
 		_puts("Argument passed: ");
-		_puts(*arg_arr);
+		_puts(*arr_arg);
 		_putchar('\n');
 	}
 
