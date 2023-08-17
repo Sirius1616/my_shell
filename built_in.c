@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * my_exit - exits the shell
- * @info: Struct that contains potential arguments.
- * Return: exits with a given exit status
+ * my_exit - shell is exited
+ * @details: potential arguments contained in shell.
+ * Return: exitt
  */
 
 
@@ -34,9 +34,8 @@ int my_exit(t_info *details)
 
 
 /**
- * change_cd - changes the current directory
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
+ * change_cd - Current directory will be changed
+ * @details: Arguments contained in structure.
  *  Return: Always 0
  */
 
@@ -98,9 +97,8 @@ int change_cd(t_info *details)
 
 
 /**
- * help_cd - helper function
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
+ * help_cd - function that helps
+ * @details: Arguments contained in structure
  *  Return: Always 0
  */
 
