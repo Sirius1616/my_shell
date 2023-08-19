@@ -130,7 +130,7 @@ void get_cmd(t_info *inf)
 	else if (*(inf->ag) != '\n')
 	{
 		inf->stat = 127;
-		p_error(inf, "doesn't exist\n");
+		err_print(inf, "doesn't exist\n");
 	}
 	}
 }
@@ -176,6 +176,6 @@ void fork_cmd(t_info *inf)
 	{
 		inf->stat = WEXITSTATUS(inf->stat);
 		if (inf->stat == 126)
-		p_error(inf, "Permission denied\n");
+		err_print(inf, "Permission denied\n");
 	}
 }
