@@ -58,7 +58,7 @@ int remenv(t_info *details, char *v)
  */
 
 
-int put_env(t_info *details, char *v, char *vl)
+int set_env(t_info *details, char *v, char *vl)
 {
 	char *buff = NULL;
 	t_list *node;
