@@ -48,7 +48,6 @@ void ffree(char **ppl)
  * @ptrr: previous malloc'ated block ptr
  * @prev_sizee: previous block bytes size
  * @curr_sizee: new block byted size
- *
  * Return: pointer to da ol'block nameen.
  */
 

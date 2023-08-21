@@ -3,7 +3,7 @@
 /**
  * my_exit - shell is exited
  * @details: potential arguments contained in shell.
- * Return: exitt
+ * Return: exit
  */
 
 

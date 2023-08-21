@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * bfree - address is Nullified after freeing ptr
+ * free_add - address is Nullified after freeing ptr
  * @ptrr: pointer to free address
  * Return: 0 if not freed, otherwise 1.
  */
 
-int bfree(void **ptrr)
+int free_add(void **ptrr)
 {
 	if (!ptrr || !*ptrr)
 	{

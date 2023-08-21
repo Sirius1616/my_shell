@@ -1,12 +1,11 @@
 #include "shell.h"
 
 /**
- * add_node - adds a node to the start of the list
- * @heads: address of pointer to head node
- * @strr: str field of node
- * @nums: node index used by history
- *
- * Return: size of list
+ * insert_node - a function that adds a node to the begining of a list
+ * @hd: pointer to head node's adrress
+ * @strr: str part of the node
+ * @nums: history's node index
+ * Return: list size
  */
 
 
@@ -42,12 +41,11 @@ list_t *insert_node(t_list **hd, const char *strr, int nums)
 }
 
 /**
- * add_node_end - adds a node to the end of the list
- * @heads: address of pointer to head node
- * @strr: str field of node
- * @nums: node index used by history
- *
- * Return: size of list
+ * insert_node_end - a function that adds to the list end a node
+ * @hd: pointer to head node address
+ * @strr: the string field
+ * @nums: history's node index
+ * Return: length of list
  */
 
 list_t *insert_node_end(t_list **hd, const char *strr, int nums)
@@ -92,10 +90,9 @@ list_t *insert_node_end(t_list **hd, const char *strr, int nums)
 }
 
 /**
- * print_list_str - prints only the str element of a list_t linked list
- * @hd: pointer to first node
- *
- * Return: size of list
+ * put_list_str - the list element of the linked list is printed
+ * @hd: 1st node's pointer
+ * Return: list length
  */
 
 size_t put_str_list(const t_list *hd)
@@ -120,11 +117,10 @@ size_t put_str_list(const t_list *hd)
 }
 
 /**
- * delete_node_at_index - deletes node at given index
- * @heads: address of pointer to first node
- * @_index: index of node to delete
- *
- * Return: 1 on success, 0 on failure
+ * rem_node_at_index - given index node is removed
+ * @hd: pointer to first node's address
+ * @_index: index of node to remove
+ * Return: 0 on failure 1, otherwise
  */
 
 
@@ -161,10 +157,9 @@ int rem_node_at_index(t_list **hd, unsigned int _index)
 }
 
 /**
- * free_list - frees all nodes of a list
- * @heads_ptr: address of pointer to head node
- *
- * Return: void
+ * clear_list - all the nodes of the list is cleared
+ * @heads_ptr: pointer to head node address
+ * Return: nothing
  */
 
 void clear_list(t_list **hd_ptr)
