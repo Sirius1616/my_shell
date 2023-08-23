@@ -30,7 +30,7 @@ char **list_strings_conv(t_list *hd)
 {
 	size_t i, j, length = 0;
 	char **str_array;
-	list_t *node = hd;
+	t_list *node = hd;
 
 	while (node)
 	{
@@ -76,7 +76,7 @@ size_t put_list(const t_list *hd)
 
 	for (; hd; hd = hd->next)
 	{
-		_puts(num_conv(hd->num, 10, 0));
+		_puts(num_conv(hd->number, 10, 0));
 		_putchar(':');
 		_putchar(' ');
 		_puts(hd->str ? hd->str : "(nil)");
@@ -97,7 +97,7 @@ size_t put_list(const t_list *hd)
  */
 
 
-list_t *begin_node(t_list *nodes, char *pref, char ch)
+t_list *begin_node(t_list *nodes, char *pref, char ch)
 {
 	char *pt;
 

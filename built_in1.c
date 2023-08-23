@@ -7,7 +7,7 @@
  */
 int my_hist(t_info *details)
 {
-	print_list(details->hist);
+	put_list(details->hist);
 	return (0);
 }
 
@@ -30,8 +30,8 @@ int rem_alias(t_info *details, char *s)
 	temp_char = *equal_sign;
 	*equal_sign = '\0';
 
-	alias_index = set_node_index(info->alias, begin_node(info->alias, s, -1));
-	ret = rem_node_at_index(&(info->alias), alias_index);
+	alias_index = set_node_index(details->alias, begin_node(details->alias, s, -1));
+	ret = rem_node_at_index(&(details->alias), alias_index);
 
 	*equal_sign = temp_char;
 

@@ -9,7 +9,7 @@
  */
 
 
-list_t *insert_node(t_list **hd, const char *strr, int nums)
+t_list *insert_node(t_list **hd, char *strr, int nums)
 {
 	t_list *nw_hd;
 
@@ -20,7 +20,7 @@ list_t *insert_node(t_list **hd, const char *strr, int nums)
 	if (!nw_hd)
 		return (NULL);
 
-	nw_hd->num = nums;
+	nw_hd->number = nums;
 	nw_hd->str = NULL;
 
 	if (strr)
@@ -48,7 +48,7 @@ list_t *insert_node(t_list **hd, const char *strr, int nums)
  * Return: length of list
  */
 
-list_t *insert_node_end(t_list **hd, const char *strr, int nums)
+t_list *insert_node_end(t_list **hd, char *strr, int nums)
 {
 	t_list *nw_node;
 
@@ -59,7 +59,7 @@ list_t *insert_node_end(t_list **hd, const char *strr, int nums)
 	if (!nw_node)
 		return (NULL);
 
-	nw_node->num = nums;
+	nw_node->number = nums;
 	nw_node->str = NULL;
 
 	if (strr)
@@ -126,7 +126,7 @@ size_t put_str_list(const t_list *hd)
 
 int rem_node_at_index(t_list **hd, unsigned int _index)
 {
-	t_list *current, previous;
+	t_list *current, *previous;
 	unsigned int i;
 
 	if (!hd || !_index)

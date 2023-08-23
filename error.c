@@ -54,7 +54,7 @@ int filedes_put(char ch, int fd)
 	static int j;
 	static char buf[WR_BUFFER_SZ];
 
-	 if (i >= WR_BUFFER_SZ || ch == BUFFER_FLUSH)
+	 if (j >= WR_BUFFER_SZ || ch == BUFFER_FLUSH)
 	{
 		write(fd, buf, j);
 		j = 0;

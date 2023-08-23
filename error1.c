@@ -64,7 +64,7 @@ int print_dec(int in, int fd)
 	unsigned int absolute, current;
 
 	if (fd == STDERR_FILENO)
-		put_char = eput_char;
+		put_char = putchar_err;
 
 	if (in < 0)
 	{
@@ -113,13 +113,13 @@ char *num_conv(long int num, int _base, int _flag)
 	char *pt;
 	unsigned long n = num;
 
-	if (((_flag & UNSIGN_CONV) == NULL) && num < 0)
+	if (!(_flag & UNSIGN_CONV) && num < 0)
 	{
 	n = -num;
 	sign = '-';
 	}
 
-	arr = _flag & LOWERCASE_CONV ? "0123456789abcdef" : "0123456789ABCDEF";
+	arr = _flag & LOWCASE_CONV ? "0123456789abcdef" : "0123456789ABCDEF";
 	pt = &buff[49];
 	*pt = '\0';
 

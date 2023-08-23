@@ -28,7 +28,7 @@ char *_memset(char *src, char ch, unsigned int m)
  */
 
 
-void ffree(char **ppl)
+void f_release(char **ppl)
 {
 	char **current, **aa = ppl;
 

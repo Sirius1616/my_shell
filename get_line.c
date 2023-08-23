@@ -15,7 +15,7 @@ ssize_t insert_buf(t_info *details, char **buffer, size_t *size)
 	ssize_t r = 0;
 	size_t len_pt = 0;
 
-	if (*len == 0)
+	if (*size == 0)
 	{
 		free(*buffer);
 		*buffer = NULL;
@@ -37,10 +37,10 @@ ssize_t insert_buf(t_info *details, char **buffer, size_t *size)
 
 			details->count_line_flag = 1;
 			comment_rem(*buffer);
-			hist_build(details, *buffer, details->histcnt++);
+			hist_build(details, *buffer, details->hist_cnt++);
 
 			{
-				*len = r;
+				*size = r;
 				details->cmd_ads = buffer;
 			}
 		}
@@ -175,11 +175,11 @@ int get_line(t_info *details, char **ptr, size_t *length)
 
 	if (s)
 	{
-		_strncat(new_pt, buf + j, z - j);
+		_strncat(new_pt, buffer + j, z - j);
 	}
 	else
 	{
-		_strncpy(new_pt, buf + j, z - j + 1);
+		_strncpy(new_pt, buffer + j, z - j + 1);
 	}
 
 	s += z - j;
@@ -205,7 +205,7 @@ int get_line(t_info *details, char **ptr, size_t *length)
  */
 
 
-void handleCtrlC(__attribute__((unused)) int sign_id)
+void handleCtrlC(__attribute__((unused))int sign_id)
 {
 	char newline = '\n';
 	char prompt[] = "$ ";

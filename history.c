@@ -48,12 +48,12 @@ int wr_hist(t_info *details)
 
 	while (node)
 	{
-		_putsfd(node->str, fd);
-		_putfd('\n', fd);
+		filedes_puts(node->str, fd);
+		filedes_put('\n', fd);
 		node = node->next;
 	}
 
-	_putfd(BUFFER_FLUSH, fd);
+	filedes_put(BUFFER_FLUSH, fd);
 
 	close(fd);
 
@@ -94,7 +94,7 @@ int rd_hist(t_info *details)
 		return (0);
 	}
 	readlength = read(fd, buff, file_sz);
-	buff[fsize] = 0;
+	buff[file_sz] = 0;
 	if (readlength <= 0)
 	{
 		free(buff);
@@ -108,13 +108,13 @@ int rd_hist(t_info *details)
 		if (buff[j] == '\n')
 		{
 			buff[j] = 0;
-			hist_build(info, buff + end, ln_cnt++);
+			hist_build(details, buff + end, ln_cnt++);
 			end = j + 1;
 		}
 		j++;
 	}
 	if (end != j)
-	hist_build(info, buff + end, ln_cnt++);
+	hist_build(details, buff + end, ln_cnt++);
 	free(buff);
 	details->hist_cnt = ln_cnt;
 	for (; details->hist_cnt >= HIST_LIMIT; details->hist_cnt--)
@@ -162,7 +162,7 @@ int hist_renum(t_info *details)
 	
 	for (j = 0; node; j++)
 	{
-		node->num = j;
+		node->number = j;
 		node = node->next;
 	}
 

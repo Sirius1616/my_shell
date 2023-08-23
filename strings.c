@@ -47,7 +47,7 @@ int _strcmp(char *str1, char *str2)
  * Return: address of next char of haystack or NULL
  */
 
-char *starts_with(const char *soup, const char *meat)
+char *begins_with(const char *soup, const char *meat)
 {
 	for (; *meat; meat++, soup++)
 	{

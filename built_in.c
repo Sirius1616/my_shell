@@ -29,7 +29,7 @@ int my_exit(t_info *details)
 	}
 
 	details->error_code = -1;
-	return (-2)
+	return (-2);
 }
 
 
@@ -89,7 +89,7 @@ int change_cd(t_info *details)
 	{
 		set_env(details, "OLDPWD", current_dir);
 		new_pwd = getcwd(buff, 1024);
-		set_env(info, "PWD", new_pwd);
+		set_env(details, "PWD", new_pwd);
 	}
 
 	return (0);

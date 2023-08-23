@@ -12,7 +12,7 @@ int interact(t_info *details)
 
 	if (isatty(STDIN_FILENO))
 	{
-		if (details->readfd <= 2)
+		if (details->read_file_desc <= 2)
 		{
 			is_interactive = 1;
 		}

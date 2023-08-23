@@ -14,7 +14,7 @@
 
 /* macros */
 #define RD_BUFFER_SZ 1024
-#define WR_BUFF_SZ 1024
+#define WR_BUFFER_SZ 1024
 #define BUFFER_FLUSH -1
 #define NORM_CMD	0
 #define OR_CMD		1
@@ -25,7 +25,7 @@
 #define GETLN_USE 0
 #define STRTOK_USE 0
 #define FILE_HISTORY	".history_of_simple_shell"
-#define MAX_LIMIT	4096
+#define HIST_LIMIT	4096
 
 extern char **environ;
 
@@ -110,119 +110,124 @@ int get_inbuilt(t_info *);
 void get_cmd(t_info *);
 void fork_cmd(t_info *);
 
-/* toem_parser.c */
-int is_cmd(info_t *, char *);
-char *dup_chars(char *, int, int);
-char *find_path(info_t *, char *, char *);
 
-/* loophsh.c */
+int a_cmd(t_info *, char *);
+char *duplicate_char(char *, int, int);
+char *get_path(t_info *, char *, char *);
+
+
 int loophsh(char **);
 
-/* toem_errors.c */
+
 void puts_err(char *);
 int putchar_err(char);
 int filedes_put(char c, int fd);
 int filedes_puts(char *str, int fd);
 
-/* toem_string.c */
+
 int _strlen(char *);
 int _strcmp(char *, char *);
-char *starts_with(const char *, const char *);
+char *begins_with(const char *, const char *);
 char *_strcat(char *, char *);
 
-/* toem_string1.c */
+
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
 void _puts(char *);
 int _putchar(char);
 
-/* toem_exits.c */
+
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
 
-/* toem_tokenizer.c */
-char **strtow(char *, char *);
-char **strtow2(char *, char);
 
-/* toem_realloc.c */
+char **str_token(char *, char *);
+char **str_token2(char *, char);
+
+
 char *_memset(char *, char, unsigned int);
-void ffree(char **);
+void f_release(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 
-/* toem_memory.c */
-int bfree(void **);
 
-/* toem_atoi.c */
-int interactive(info_t *);
-int is_delim(char, char *);
+int free_add(void **);
+
+
+int interact(t_info *);
+int is_delimiter(char, char *);
 int _isalpha(int);
 int _atoi(char *);
 
-/* toem_errors1.c */
-int atoi_error(char *)
-void err_print(t_info *, char *)
+
+int atoi_error(char *);
+void err_print(t_info *, char *);
 int print_dec(int, int);
 char *num_conv(long int, int, int);
 void comment_rem(char *);
 
-/* toem_builtin.c */
-int _myexit(info_t *);
-int _mycd(info_t *);
-int _myhelp(info_t *);
 
-/* toem_builtin1.c */
-int _myhistory(info_t *);
-int _myalias(info_t *);
+int my_exit(t_info *);
+int change_cd(t_info *);
+int help_cd(t_info *);
 
-/*toem_getline.c */
-ssize_t get_input(info_t *);
-int _getline(info_t *, char **, size_t *);
-void sigintHandler(int);
 
-/* toem_getinfo.c */
-void clear_info(info_t *);
-void set_info(info_t *, char **);
-void free_info(info_t *, int);
+int my_hist(t_info *);
+int rem_alias(t_info *, char *);
+int put_alias(t_info *, char *);
+int write_alias(t_list *);
+int my_alias(t_info *);
 
-/* toem_environ.c */
-char *_getenv(info_t *, const char *);
-int _myenv(info_t *);
-int _mysetenv(info_t *);
-int _myunsetenv(info_t *);
-int populate_env_list(info_t *);
 
-/* toem_getenv.c */
-char **get_environ(info_t *);
-int _unsetenv(info_t *, char *);
-int _setenv(info_t *, char *, char *);
+ssize_t find_input(t_info *);
+int get_line(t_info *, char **, size_t *);
+void handleCtrlC(int);
+ssize_t insert_buf(t_info *, char **, size_t *);
+ssize_t rd_buffer(t_info *, char *, size_t *);
 
-/* toem_history.c */
-char *get_history_file(info_t *info);
-int write_history(info_t *info);
-int read_history(info_t *info);
-int build_history_list(info_t *info, char *buf, int linecount);
-int renumber_history(info_t *info);
 
-/* toem_lists.c */
-list_t *add_node(list_t **, const char *, int);
-list_t *add_node_end(list_t **, const char *, int);
-size_t print_list_str(const list_t *);
-int delete_node_at_index(list_t **, unsigned int);
-void free_list(list_t **);
+void delete_info(t_info *);
+void put_info(t_info *, char **);
+void free_inf(t_info *, int);
 
-/* toem_lists1.c */
-size_t list_len(const list_t *);
-char **list_to_strings(list_t *);
-size_t print_list(const list_t *);
-list_t *node_starts_with(list_t *, char *, char);
-ssize_t get_node_index(list_t *, list_t *);
 
-/* toem_vars.c */
-int is_chain(info_t *, char *, size_t *);
-void check_chain(info_t *, char *, size_t *, size_t, size_t);
-int replace_alias(info_t *);
-int replace_vars(info_t *);
-int replace_string(char **, char *);
+char *get_env(t_info *, const char *);
+int my_env(t_info *);
+int my_set_env(t_info *);
+int my_unset_env(t_info *);
+int fill_env_list(t_info *);
+
+
+char **find_environ(t_info *);
+int remenv(t_info *, char *);
+int set_env(t_info *, char *, char *);
+
+
+char *get_history(t_info *);
+int wr_hist(t_info *);
+int rd_hist(t_info *);
+int hist_build(t_info *, char *, int);
+int hist_renum(t_info *);
+
+
+t_list *insert_node(t_list **, char *, int);
+t_list *insert_node_end(t_list **, char *, int);
+size_t put_str_list(const t_list *);
+int rem_node_at_index(t_list **, unsigned int);
+void clear_list(t_list **);
+
+
+size_t len_list(const t_list *);
+char **list_strings_conv(t_list *);
+size_t put_list(const t_list *);
+t_list *begin_node(t_list *, char *, char);
+ssize_t set_node_index(t_list *, t_list *);
+
+
+int is_linked(t_info *, char *, size_t *);
+void chk_link(t_info *, char *, size_t *, size_t, size_t);
+int change_alias(t_info *);
+int change_vars(t_info *);
+int change_string(char **, char *);
 
 #endif

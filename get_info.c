@@ -9,7 +9,7 @@ void delete_info(t_info *details)
 	details->ag = NULL;
 	details->av = NULL;
 	details->path = NULL;
-	deteils->argc = 0;
+	details->ac = 0;
 }
 
 /**
@@ -76,10 +76,10 @@ void free_inf(t_info *details, int all)
 		}
 		f_release(details->environ);
 		details->environ = NULL;
-		b_release((void **)details->cmd_ads);
+		free_add((void **)details->cmd_ads);
 		if (details->read_file_desc > 2)
 		{
-			close(info->read_file_desc);
+			close(details->read_file_desc);
 		}
 		_putchar(BUFFER_FLUSH);
 	}

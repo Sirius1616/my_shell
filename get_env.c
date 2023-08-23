@@ -89,6 +89,6 @@ int set_env(t_info *details, char *v, char *vl)
 
 	insert_node_end(&(details->env_list), buff, 0);
 	free(buff);
-	info->changed_env = 1;
+	details->changed_env = 1;
 	return (0);
 }

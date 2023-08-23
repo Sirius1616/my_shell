@@ -13,11 +13,11 @@ int hash(t_info *inf, char **ave)
 	ssize_t x = 0;
 	int builtin_rt = 0;
 
-	for (; x != -1 && builtin_rt != -2; clear_info(inf))
+	for (; x != -1 && builtin_rt != -2; delete_info(inf))
 	{
 	if (interact(inf))
 	_puts("$ ");
-	e_putchar(BUFFER_FLUSH);
+	putchar_err(BUFFER_FLUSH);
 	x = find_input(inf);
 	if (x != -1)
 	{
