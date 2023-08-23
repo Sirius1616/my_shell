@@ -20,14 +20,14 @@ int atoi_error(char *str)
             res *= 10;
             res += (str[i] - '0');
             if (res > INT_MAX)
-                return -1;
+                return (-1);
         } else {
-            return -1;
+            return (-1);
         }
 	i++;
 	}
 
-	return ((int)res);
+	return (res);
 }
 
 /**
@@ -125,11 +125,11 @@ char *num_conv(long int num, int _base, int _flag)
 
 	for (; n != 0; n /= _base)
 	{
-		*(--pt) = arr[n % _base];
+		*--pt = arr[n % _base];
 	}
 
 	if (sign)
-		*(--pt) = sign;
+		*--pt = sign;
 
 	return (pt);
 }

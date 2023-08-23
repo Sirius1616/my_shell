@@ -65,11 +65,11 @@ int set_env(t_info *details, char *v, char *vl)
 	char *t;
 
 	if (!v || !vl)
-	return 0;
+	return (0);
 
 	buff = malloc(_strlen(v) + _strlen(vl) + 2);
 	if (!buff)
-	return 1;
+	return (1);
 
 	_strcpy(buff, v);
 	_strcat(buff, "=");

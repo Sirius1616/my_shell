@@ -9,7 +9,7 @@
  */
 
 
-t_list *insert_node(t_list **hd, char *strr, int nums)
+t_list *insert_node(t_list **hd, const char *strr, int nums)
 {
 	t_list *nw_hd;
 
@@ -48,7 +48,7 @@ t_list *insert_node(t_list **hd, char *strr, int nums)
  * Return: length of list
  */
 
-t_list *insert_node_end(t_list **hd, char *strr, int nums)
+t_list *insert_node_end(t_list **hd, const char *strr, int nums)
 {
 	t_list *nw_node;
 

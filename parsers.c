@@ -67,7 +67,7 @@ char *get_path(t_info *inf, char *path_str, char *_cmd)
 	return NULL;
 
 
-	if (_strlen(_cmd) > 2 && begins_with(_cmd, "./"))
+	if ((_strlen(_cmd) > 2) && begins_with(_cmd, "./"))
 	{
 	if (a_cmd(inf, _cmd))
 		return _cmd;

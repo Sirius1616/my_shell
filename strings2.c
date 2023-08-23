@@ -6,7 +6,7 @@
  * @_src: the src
  * Return: destination pointer
  */
-char *_strcpy(char *_dest, char *_src)
+char *_strcpy(char *_dest, const char *_src)
 {
 	int x;
 
@@ -36,14 +36,14 @@ char *_strdup(const char *strr)
 	char *rt;
 
 	if (strr == NULL)
-		return NULL;
+		return (NULL);
 
 	for (; *strr; strr++)
 		lengths++;
 
 	rt = malloc(sizeof(char) * (lengths + 1));
 	if (!rt)
-		return NULL;
+		return (NULL);
 
 	lengths++;
 	while (lengths--)

@@ -8,7 +8,7 @@
  */
 void puts_err(char *s)
 {
-	if (s == NULL)
+	if (!s)
 		return;
 
 	for (int x = 0; s[x] != '\0'; x++)
@@ -73,14 +73,14 @@ int filedes_put(char ch, int fd)
 
 int filedes_puts(char *s, int fd)
 {
-	if (s == NULL)
+	if (!s)
 		return (0);
 
 	int u = 0;
 
-	for (; *s; s++)
+	while (*s)
 	{
-		u += filedes_put(*s, fd);
+		u += filedes_put(*s++, fd);
 	}
 
 	return (u);

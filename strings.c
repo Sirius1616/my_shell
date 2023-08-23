@@ -6,7 +6,7 @@
  * Return: integer length of string
  */
 
-int _strlen(char *str)
+int _strlen(const char *str)
 {
 	int x = 0;
 
@@ -16,7 +16,7 @@ int _strlen(char *str)
 	for (; *str != '\0'; str++)
 	x++;
 
-	return x;
+	return (x);
 }
 
 /**
@@ -83,5 +83,5 @@ char *_strcat(char *_dest, char *_src)
 
 	*_dest = *_src;
 
-	return rt;
+	return (rt);
 }

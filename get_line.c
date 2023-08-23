@@ -158,13 +158,13 @@ int get_line(t_info *details, char **ptr, size_t *length)
 	q = rd_buffer(details, buffer, &len);
 	if (q == -1 || (q == 0 && len == 0))
 	{
-		return -1;
+		return (-1);
 	}
 
 	c = _strchr(buffer + j, '\n');
 	z = c ? 1 + (size_t)(c - buffer) : len;
 	new_pt = _realloc(pt, s, s ? s + z : z + 1);
-	if (new_pt == NULL)
+	if (!new_pt)
 	{
 		if (pt)
 		{

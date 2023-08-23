@@ -125,13 +125,13 @@ int filedes_put(char c, int fd);
 int filedes_puts(char *str, int fd);
 
 
-int _strlen(char *);
+int _strlen(const char *);
 int _strcmp(char *, char *);
 char *begins_with(const char *, const char *);
 char *_strcat(char *, char *);
 
 
-char *_strcpy(char *, char *);
+char *_strcpy(char *, const char *);
 char *_strdup(const char *);
 void _puts(char *);
 int _putchar(char);
@@ -210,8 +210,8 @@ int hist_build(t_info *, char *, int);
 int hist_renum(t_info *);
 
 
-t_list *insert_node(t_list **, char *, int);
-t_list *insert_node_end(t_list **, char *, int);
+t_list *insert_node(t_list **, const char *, int);
+t_list *insert_node_end(t_list **,const char *, int);
 size_t put_str_list(const t_list *);
 int rem_node_at_index(t_list **, unsigned int);
 void clear_list(t_list **);
