@@ -21,8 +21,8 @@ int hash(t_info *inf, char **ave)
 	x = find_input(inf);
 	if (x != -1)
 	{
-		put_inf(inf, ave);
-		builtin_rt = find_builtin(inf);
+		put_info(inf, ave);
+		builtin_rt = get_inbuilt(inf);
 		if (builtin_rt == -1)
 		get_cmd(inf);
 	}
@@ -66,11 +66,11 @@ int get_inbuilt(t_info *inf)
 	{"setenv", my_set_env},
 	{"unsetenv", my_unset_env},
 	{"cd", change_cd},
-	{"alias", _myalias},
+	{"alias", my_alias},
 	{NULL, NULL}
 	};
 
-	while (inbuilt1[x].type != NULL)
+	while (inbuilt1[x].flag_type != NULL)
 	{
 	if (_strcmp(inf->av[0], inbuilt1[x].flag_type) == 0)
 	{

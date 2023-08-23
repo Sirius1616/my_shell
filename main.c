@@ -38,6 +38,6 @@ int main(int ac, char **av)
 	}
 	fill_env_list(details);
 	rd_hist(details);
-	hsh(details, av);
+	hash(details, av);
 	return (EXIT_SUCCESS);
 }

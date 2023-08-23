@@ -20,7 +20,7 @@ char **str_token(char *strr, char *dc) {
 	while ( strr[x] != '\0')
 	{
 	if (!is_delimiter(strr[x], dc) && (is_delimiter(strr[x + 1], dc) || !strr[x + 1]))
-		numword++;
+		n_word++;
 	x++;
 	} 
 
