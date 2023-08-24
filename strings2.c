@@ -38,18 +38,16 @@ char *_strdup(const char *strr)
 	if (strr == NULL)
 		return (NULL);
 
-	for (; *strr; strr++)
-		lengths++;
+	for (; strr[lengths]; lengths++)
+		;
 
 	rt = malloc(sizeof(char) * (lengths + 1));
 	if (!rt)
-		return (NULL);
+		return NULL;
 
-	lengths++;
-	while (lengths--)
+	for (int i = 0; i <= lengths; i++)
 	{
-		lengths--;
-		rt[lengths] = *strr--;
+		rt[i] = strr[i];
 	}
 
 	return (rt);
